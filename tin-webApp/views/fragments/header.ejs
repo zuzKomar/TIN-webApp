@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream-On-Wheels Demo</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div >
+    <ul class="languages">
+    <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+    <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
+    </ul>
+</div>
+<header>
+
+    <img class="img2" src="/images/logo2.png" alt="Dmw2">
+    <h1>Dream On Wheels</h1>
+    <img class="img1" src="/images/logo.png" alt="Dream On Wheels Logo">
+</header>
+
+<% if(!loggedUser) { %>
+    <div class="logowanie">
+        <p style="float:left"><a class="link" href="/login"><%=__('header.log')%></a></p>
+        <p><a class="link" href="/register"><%=__('header.register')%></a></p>
+    </div>
+<% } else { %>
+<div class="logged">
+    <span><%=__('nav.logged')%> <%=loggedUser.firstName + " " + loggedUser.lastName+",    "%></span>
+    <a class="link" href="/logout"><%=__('nav.logout')%></a>
+</div>
+<% } %>
+<%if(loggedUser){%>
+<nav>
+    <ul class ="nav">
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><%=__('nav.main')%></a></li>
+        <li><a href="/cars" class="<%= navLocation == 'car' ? 'active' : ''%>"><%=__('nav.car')%></a></li>
+        <% if(loggedUser.role==='emp') { %>
+        <li><a href="/clients" class="<%= navLocation == 'clientt' ? 'active' : ''%>"><%=__('nav.clientt')%></a></li>
+            <%}%>
+        <li><a href="/rents" class="<%= navLocation == 'rent' ? 'active' : ''%>"><%=__('nav.rent')%></a></li>
+
+    </ul>
+</nav>
+<%}%>
+

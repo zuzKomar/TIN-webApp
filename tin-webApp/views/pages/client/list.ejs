@@ -1,0 +1,39 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2><%=__('clientt.list.title')%></h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th><%=__('clientt.fields.firstName')%></th>
+            <th><%=__('clientt.fields.lastName')%></th>
+            <th><%=__('clientt.fields.phone')%></th>
+            <th><%=__('list.actions.title')%></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let client of clients) { %>
+        <tr>
+            <td><%= client.firstName %></td>
+            <td><%= client.lastName %></td>
+            <td><%= client.phone %></td>
+            <td>
+                <ul class="list-actions">
+                    <li>
+                        <a href="/clients/details/<%=client._id%>"class="list-actions-button-details"><%=__('list.actions.details')%></a>
+                    </li>
+                    <li>
+                        <a href="/clients/edit/<%=client._id%>"class="list-actions-button-edit"><%=__('list.actions.edit')%></a>
+                    </li>
+                    <li>
+                        <a href="/clients/delete/<%=client._id%>" onclick="return confirm('<%=__('list.actions.confirm')%>')" class="list-actions-button-delete"><%=__('list.actions.delete')%></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <p><a href="/clients/add"class="button-add"><%=__('clientt.list.addNew')%></a></p>
+
+</main>
+<%- include('../../fragments/footer.ejs') %>

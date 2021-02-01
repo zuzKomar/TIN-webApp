@@ -1,0 +1,23 @@
+ <% if (formMode == 'createNew') { %>
+                <label for="client_id">Wybierz klienta:<abbr title="required" aria-label="required">*</abbr></label>
+                <select id="client_id" name="client_id" required %>>
+                    <option value="" selected disabled>---Wybierz klienta---</option>
+
+                    <% for (let i=0; i<allClients.length; i++) { let client = allClients[i]; %>
+                    <option value="<%=client._id%>" label="<%=client.firstName+ ' '+ client.lastName%>"
+                            <%= (rent._id && client._id.toString() == rent.client._id.toString()) ? 'selected' : ''%>
+                    ></option>
+                    <% } %>
+                </select>
+            <% } else { %>
+            <label for="client_id">Klient:</label>
+            <input type="text" name="client_id" id="client_id" value="<%=rent.client.firstName+ ' '+ rent.client.lastName%>" disabled/>
+            <% } %>
+
+            <span id="errorClient" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('client_id'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('client_id')).message %>
+                    <% } %>
+                <% } %>
+            </span>

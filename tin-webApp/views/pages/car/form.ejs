@@ -1,0 +1,233 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <% if(loggedUser.role==='emp' || (loggedUser.role === 'client' && formMode == 'showDetails') ) { %>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationCarForm.js"></script>
+
+    <% if (formMode == 'createNew') { %>
+    <h2><%= __('car.form.add.pageTitle') %></h2>
+        <%}else if(formMode == 'edit'){%>
+        <h2><%= __('car.form.edit.pageTitle') %></h2>
+        <%}else{%>
+        <h2><%= __('car.form.details.pageTitle') %></h2>
+    <%}%>
+    <div class="centeredForm">
+
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm()">
+            <div style="display: none">
+                <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+                <span id="errorMessage-validateError"><%=__('validationMessage.validateError')%></span>
+                <span id="errorMessage-260length"><%=__('validationMessage.260length')%></span>
+                <span id="errorMessage-costErr"> <%=__('validationMessage.costErr')%></span>
+                <span id="errorMessage-capacityErr"> <%=__('validationMessage.capacityErr')%></span>
+                <span id="errorMessage-powerErr"> <%=__('register.power')%></span>
+                <span id="errorMessage-yearErr"> <%=__('register.year')%></span>
+            </div>
+        <input type="hidden" name="_id" value="<%= car._id %>">
+
+
+        <label for="brand"><%= __('car.fields.brand') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="brand" id="brand" placeholder="<%=__('register.len1')%>" value="<%= car.brand %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('brand')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+                <input type="text" name="brand" id="brand" placeholder="<%=__('register.len1')%>" value="<%= car.brand %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorBrand" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('brand'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('brand')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="model"><%= __('car.fields.model') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="model" id="model" placeholder="<%=__('register.len1')%>" value="<%=car.model %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('model')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="text" name="model" id="model" placeholder="<%=__('register.len1')%>" value="<%=car.model %>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorModel" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('model'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('model')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="year"><%= __('car.fields.year') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="number" name="year" id="year" placeholder="<%=__('register.year')%>" value="<%=car.year%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('year')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="number" name="year" id="year" placeholder="<%=__('register.year')%>" value="<%=car.year%>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorProdYear" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('year'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('year')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="power"><%= __('car.fields.power') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="number" name="power" id="power" placeholder="<%=__('register.power')%>" value="<%=car.power%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('power')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="number" name="power" id="power" placeholder="<%=__('register.power')%>" value="<%=car.power%>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorPower" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('power'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('power')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="capacity"><%= __('car.fields.capacity') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="number" min="1" step="0.1" name="capacity" id="capacity" placeholder="<%=__('register.capacity')%>" value="<%=car.capacity%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('capacity')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="number" min="1" step="0.1" name="capacity" id="capacity" placeholder="<%=__('register.capacity')%>" value="<%=car.capacity%>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorCapacity" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('capacity'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('capacity')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="cost"><%= __('car.fields.cost') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="number" name="cost" id="cost" placeholder="<%=__('register.cost')%>" value="<%=car.cost%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('cost')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="number" name="cost" id="cost" placeholder="<%=__('register.cost')%>" value="<%=car.cost%>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorCost" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('cost'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('cost')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+
+        <% if (formMode == 'showDetails' && loggedUser.role==='emp'){ %>
+            <div class="detailCenter">
+                <a href="/cars/edit/<%= car._id %>" class="button-add"><%= __('form.actions.edit') %></a>
+        </div>
+        <% } %>
+
+
+        <div class="form-buttons">
+            <%if(locals.validationErrors){%>
+            <p id="errorsSummary" class="errors-text"><%=__('register.error')%></p>
+                <%}else{%>
+            <p id="errorsSummary" class="errors-text"></p>
+                    <%}%>
+            <% if (formMode == 'createNew') { %>
+            <input class="form-button-submit" type="submit" value="<%= __('car.form.add.btnLabel') %>"  />
+            <a class="form-button-cancel" href="/cars"><%=__('header.cancel')%></a>
+            <% }else if(formMode == 'edit'){ %>
+                <input class="form-button-submit" type="submit" value="<%= __('car.form.edit.btnLabel') %>"  />
+                <a class="form-button-cancel" href="/cars"><%=__('header.cancel')%></a>
+            <% } else if(car.rents.length==0){ %>
+            <div class="detailCenter">
+                <a class="form-button-cancel" href="/cars"><%=__('header.back')%></a>
+            </div>
+            <%}%>
+        </div>
+        </form>
+    </div>
+
+        <% if (formMode == 'showDetails' && car.rents.length>0 && loggedUser.role==='emp') { %>
+        <h3>
+            <%=__('car.form.rent')%>
+        </h3>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th><%=__('rent.fields.client_id')%></th>
+                <th><%=__('rent.fields.cost')%></th>
+                <th><%=__('rent.fields.dateFrom')%></th>
+                <th><%=__('rent.fields.dateTo')%></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let r of car.rents) { %>
+            <tr>
+                <td><a class="link" href="/clients/details/<%=r.client._id %>"><%=r.client.firstName +' '+r.client.lastName%></a></td>
+                <td><%=((((r.dateTo.getTime()-r.dateFrom.getTime())/(1000*60*60*24))*car.cost)+r.punishment)%></td>
+                <td><%= r.dateFrom.toISOString().split('T')[0] %></td>
+                <td><%= r.dateTo ? r.dateTo.toISOString().split('T')[0] : '' %></td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+
+        <div class="back">
+            <a class="form-button-cancel" href="/cars"><%=__('header.back')%></a>
+        </div>
+        <% } %>
+
+    <%if (formMode == 'showDetails' && car.rents.length>0 && loggedUser.role==='client' ) {
+        let counter=0;
+        for(let c of car.rents){
+            if(c.client._id === loggedUser._id){
+                counter++;
+            }
+            if(counter >0){%>
+        <h3>
+            <%=__('car.form.rent')%>
+        </h3>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th><%=__('rent.fields.client_id')%></th>
+                <th><%=__('rent.fields.cost')%></th>
+                <th><%=__('rent.fields.dateFrom')%></th>
+                <th><%=__('rent.fields.dateTo')%></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let r of car.rents) {
+            if(r.client._id === loggedUser._id){%>
+            <tr>
+                <td><%=r.client.firstName +' '+r.client.lastName%></td>
+                <td><%=((((r.dateTo.getTime()-r.dateFrom.getTime())/(1000*60*60*24))*car.cost)+r.punishment)%></td>
+                <td><%= r.dateFrom.toISOString().split('T')[0] %></td>
+                <td><%= r.dateTo ? r.dateTo.toISOString().split('T')[0] : '' %></td>
+            </tr>
+            <% } %>
+            <% } %>
+            </tbody>
+        </table>
+
+          <%  }%>
+       <% }%>
+
+
+        <div class="back">
+            <a class="form-button-cancel" href="/cars"><%=__('header.back')%></a>
+        </div>
+    <% } %>
+<%}%>
+</main>
+<%- include('../../fragments/footer.ejs') %>

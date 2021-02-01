@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream-On-Wheels Demo</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="languages">
+    <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+    <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
+</div>
+<header>
+    <img class="img2" src="/images/logo2.png" alt="Dmw2">
+    <h1>Dream On Wheels</h1>
+    <img class="img1" src="/images/logo.png" alt="Dream On Wheels Logo">
+</header>
+
+<main>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationClientForm.js"></script>
+
+    <h2><%=__('header.register')%></h2>
+    <div class="centeredForm">
+
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm()">
+            <div style="display: none">
+                <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+                <span id="errorMessage-validateError"><%=__('validationMessage.validateError')%></span>
+                <span id="errorMessage-260length"><%=__('validationMessage.260length')%></span>
+                <span id="errorMessage-914length"><%=__('validationMessage.914length')%></span>
+                <span id="errorMessage-telError"><%=__('validationMessage.telError')%></span>
+                <span id="errorMessage-pesLenError"><%=__('validationMessage.pesLenError')%></span>
+                <span id="errorMessage-pesellError"><%=__('validationMessage.pesellError')%></span>
+                <span id="errorMessage-560length"><%=__('validationMessage.560length')%></span>
+                <span id="errorMessage-emaillError"><%=__('validationMessage.emaillError')%></span>
+                <span id="errorMessage-530length"><%=__('validationMessage.530length')%></span>
+                <span id="errorMessage-emailExists"><%=__('validationMessage.emailExists')%></span>
+                <span id="errorMessage-peselExists"><%=__('validationMessage.peselExists')%></span>
+            </div>
+            <input type="hidden" name="_id" value="<%= clientt._id %>">
+
+
+            <label for="firstName"><%= __('clientt.fields.firstName') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+                <input type="text" name="firstName" id="firstName" placeholder="<%=__('register.len1')%>" value="<%= clientt.firstName %>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                       class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+                <input type="text" name="firstName" id="firstName" placeholder="<%=__('register.len1')%>" value="<%= clientt.firstName %>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorFirstName" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('firstName'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+
+            <label for="lastName"><%=__('clientt.fields.lastName')%>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+                <input type="text" name="lastName" id="lastName" placeholder="<%=__('register.len1')%>" value="<%= clientt.lastName %>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                       class="<%= validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+                <input type="text" name="lastName" id="lastName" placeholder="<%=__('register.len1')%>" value="<%= clientt.lastName %>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorLastName" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('lastName'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('lastName')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="phone"><%= __('clientt.fields.phone') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="phone" id="phone" placeholder="<%=__('register.len2')%>" value="<%=clientt.phone %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('phone')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="text" name="phone" id="phone" placeholder="<%=__('register.len2')%>" value="<%=clientt.phone %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <%}%>
+            <span id="errorPhoneNumber" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('phone'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('phone')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="pesel"><%= __('clientt.fields.pesel') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="pesel" id="pesel" placeholder="<%=__('register.pes')%>" value="<%=clientt.pesel%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('pesel')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="text" name="pesel" id="pesel" placeholder="<%=__('register.pes')%>" value="<%=clientt.pesel%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorPeselNumber" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('pesel'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('pesel')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <label for="email">E-mail:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+                <input type="text" name="email" id="email" placeholder="<%=__('register.len3')%>" value="<%= clientt.email%>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                       class="<%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+                <input type="text" name="email" id="email" placeholder="<%=__('register.len3')%>" value="<%= clientt.email%>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorEmail" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('email'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('email')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+            <% if (formMode == 'createNew') { %>
+                <label for="password"><%= __('clientt.fields.password') %>:<abbr title="required" aria-label="required">*</abbr></label>
+                <% if (locals.validationErrors) {%>
+                    <input type="password" name="password" id="password" placeholder="<%=__('register.len4')%>" value="<%= clientt.password%>"
+                            <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                           class="<%= validationErrors.find(e => e.path.includes('password')) ? 'error-input' : '' %>"/>
+                <%}else{%>
+                    <input type="password" name="password" id="password" placeholder="<%=__('register.len4')%>" value="<%= clientt.password%>"
+                            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+                <%}%>
+                <span id="errorPassword" class="errors-text">
+                    <%if(locals.validationErrors){%>
+                        <% if (validationErrors.find(e => e.path.includes('password'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('password')).message %>
+                        <% } %>
+                    <% } %>
+                </span>
+            <%}%>
+
+
+            <input type="text" name="role" id="role" value="<%= clientt.role='client'%>" hidden/>
+
+
+            <div class="form-buttons">
+                <%if(locals.validationErrors){%>
+                    <p id="errorsSummary" class="errors-text"><%=__('register.error')%></p>
+                <%}else{%>
+                    <%(locals.loggedUser)%>
+                    <p id="errorsSummary" class="errors-text"></p>
+
+                <%}%>
+                <% if (formMode != 'showDetails') { %>
+                <input class="form-button-submit" type="submit" value="<%=__('header.register2')%>"/>
+                <a class="form-button-cancel" href="/"><%=__('header.cancel')%></a>
+                <%}%>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+
+
+<%- include('./fragments/footer.ejs') %>

@@ -1,0 +1,201 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <% if(loggedUser.role==='emp') { %>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationClientForm.js"></script>
+
+    <% if (formMode == 'createNew') { %>
+    <h2><%= __('clientt.form.add.pageTitle') %></h2>
+    <%}else if(formMode == 'edit'){%>
+        <h2><%= __('clientt.form.edit.pageTitle') %></h2>
+    <%}else{%>
+        <h2><%= __('clientt.form.details.pageTitle') %></h2>
+    <%}%>
+    <div class="centeredForm">
+
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm()">
+            <div style="display: none">
+                <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+                <span id="errorMessage-validateError"><%=__('validationMessage.validateError')%></span>
+                <span id="errorMessage-260length"><%=__('validationMessage.260length')%></span>
+                <span id="errorMessage-914length"><%=__('validationMessage.914length')%></span>
+                <span id="errorMessage-telError"><%=__('validationMessage.telError')%></span>
+                <span id="errorMessage-pesLenError"><%=__('validationMessage.pesLenError')%></span>
+                <span id="errorMessage-pesellError"><%=__('validationMessage.pesellError')%></span>
+                <span id="errorMessage-560length"><%=__('validationMessage.560length')%></span>
+                <span id="errorMessage-emaillError"><%=__('validationMessage.emaillError')%></span>
+                <span id="errorMessage-530length"><%=__('validationMessage.530length')%></span>
+                <span id="errorMessage-emailExists"><%=__('validationMessage.emailExists')%></span>
+                <span id="errorMessage-peselExists"><%=__('validationMessage.peselExists')%></span>
+            </div>
+        <input type="hidden" name="_id" value="<%= clientt._id %>">
+
+
+        <label for="firstName"><%= __('clientt.fields.firstName') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="firstName" id="firstName" placeholder="<%=__('register.len1')%>" value="<%= clientt.firstName %>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '' %>"/>
+                <%}else{%>
+                <input type="text" name="firstName" id="firstName" placeholder="<%=__('register.len1')%>" value="<%= clientt.firstName %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+                <%}%>
+            <span id="errorFirstName" class="errors-text">
+                <%if(locals.validationErrors){%>
+                <% if (validationErrors.find(e => e.path.includes('firstName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+                    <% } %>
+                    <% } %>
+            </span>
+
+
+            <label for="lastName"><%=__('clientt.fields.lastName')%>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="lastName" id="lastName" placeholder="<%=__('register.len1')%>" value="<%= clientt.lastName %>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+                <input type="text" name="lastName" id="lastName" placeholder="<%=__('register.len1')%>" value="<%= clientt.lastName %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorLastName" class="errors-text">
+                <%if(locals.validationErrors){%>
+                <% if (validationErrors.find(e => e.path.includes('lastName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('lastName')).message %>
+                    <% } %>
+                    <% } %>
+            </span>
+
+            <label for="phone"><%= __('clientt.fields.phone') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="phone" id="phone" placeholder="<%=__('register.len2')%>" value="<%=clientt.phone %>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('phone')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="text" name="phone" id="phone" placeholder="<%=__('register.len2')%>" value="<%=clientt.phone %>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <%}%>
+            <span id="errorPhoneNumber" class="errors-text">
+                <%if(locals.validationErrors){%>
+                <% if (validationErrors.find(e => e.path.includes('phone'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('phone')).message %>
+                    <% } %>
+                    <% } %>
+            </span>
+
+            <label for="pesel"><%= __('clientt.fields.pesel') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+            <input type="text" name="pesel" id="pesel" placeholder="<%=__('register.pes')%>" value="<%=clientt.pesel%>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                   class="<%= validationErrors.find(e => e.path.includes('pesel')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+            <input type="text" name="pesel" id="pesel" placeholder="<%=__('register.pes')%>" value="<%=clientt.pesel%>"
+            <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorPeselNumber" class="errors-text">
+                <%if(locals.validationErrors){%>
+                <% if (validationErrors.find(e => e.path.includes('pesel'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('pesel')).message %>
+                    <% } %>
+                    <% } %>
+            </span>
+
+            <label for="email">E-mail:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+                <input type="text" name="email" id="email" placeholder="<%=__('register.len3')%>" value="<%= clientt.email%>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                       class="<%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+                <input type="text" name="email" id="email" placeholder="<%=__('register.len3')%>" value="<%= clientt.email%>"
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorEmail" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('email'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('email')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+
+            <%if(formMode == 'createNew' || formMode == 'edit'){%>
+            <label for="password"><%= __('clientt.fields.password') %>:<abbr title="required" aria-label="required">*</abbr></label>
+            <% if (locals.validationErrors) {%>
+                <input type="password" name="password" id="password" placeholder="<%=__('register.len4')%>" value=""
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                       class="<%= validationErrors.find(e => e.path.includes('password')) ? 'error-input' : '' %>"/>
+            <%}else{%>
+                <input type="password" name="password" id="password" placeholder="<%=__('register.len4')%>" value=""
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+            <%}%>
+            <span id="errorPassword" class="errors-text">
+                <%if(locals.validationErrors){%>
+                    <% if (validationErrors.find(e => e.path.includes('password'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('password')).message %>
+                    <% } %>
+                <% } %>
+            </span>
+
+<%}%>
+
+            <% if (formMode == 'createNew') { %>
+            <input type="text" name="role" id="role" value="<%= clientt.role='client'%>" hidden/>
+                <%}%>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="detailCenter">
+                <a href="/clients/edit/<%=clientt._id%>" class="button-add"><%= __('form.actions.edit') %></a>
+            </div>
+        <% } %>
+
+            <div class="form-buttons">
+                <%if(locals.validationErrors){%>
+                    <p id="errorsSummary" class="errors-text"><%=__('register.error')%></p>
+                <%}else{%>
+                <p id="errorsSummary" class="errors-text"></p>
+                        <%}%>
+                <% if (formMode == 'createNew') { %>
+                <input class="form-button-submit" type="submit" value="<%=__('clientt.form.add.btnLabel')%>"/>
+                <a class="form-button-cancel" href="/clients"><%=__('header.cancel')%></a>
+                <%}else if(formMode == 'edit'){ %>
+                <input class="form-button-submit" type="submit" value="<%=__('clientt.form.edit.btnLabel')%>"/>
+                <a class="form-button-cancel" href="/clients"><%=__('header.cancel')%></a>
+              <%  } else if(clientt.rents.length==0){%>
+                    <div class="detailCenter">
+                        <a class="form-button-cancel" href="/clients"><%=__('header.back')%></a>
+                    </div>
+                <% }%>
+            </div>
+        </form>
+    </div>
+        <% if (formMode == 'showDetails'&& clientt.rents.length>0) { %>
+        <h3><%=__('clientt.form.rent')%></h3>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th><%=__('rent.fields.car_id')%></th>
+                <th><%=__('rent.fields.cost')%></th>
+                <th><%=__('rent.fields.dateFrom')%></th>
+                <th><%=__('rent.fields.dateTo')%></th>
+                <th><%=__('rent.fields.punishment')%></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let r of clientt.rents) { %>
+            <tr>
+                <td><a class="link" href="/cars/details/<%=r.car._id %>"><%=r.car.brand +' '+ r.car.model%></a> </td>
+                <td><%=((((r.dateTo.getTime()-r.dateFrom.getTime())/(1000*60*60*24))*r.car.cost)+r.punishment)%></td>
+                <td><%= r.dateFrom.toISOString().split('T')[0] %></td>
+                <td><%= r.dateTo ? r.dateTo.toISOString().split('T')[0] : '' %></td>
+                <td><%=r.punishment %></td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+    <div class="back">
+        <a class="form-button-cancel" href="/clients"><%=__('header.back')%></a>
+    </div>
+        <% } %>
+<%}%>
+</main>
+<%- include('../../fragments/footer.ejs') %>

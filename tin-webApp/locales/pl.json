@@ -1,0 +1,193 @@
+{
+  "header": {
+    "log" : "Logowanie",
+    "register": "Rejestracja",
+    "register2" : "Zarejestruj",
+    "password" : "Hasło:",
+    "login" : "Zaloguj się",
+    "cancel" : "Anuluj",
+    "back" : "Powrót"
+  },
+  "register": {
+    "error": "Formularz zawiera błędy!",
+    "len1" :  "2-60 znaków",
+    "len2" : "9-14 znaków",
+    "len3" : "5-60 znaków",
+    "len4" : "5-30 znaków",
+    "pes" : "PESEL powinien zawierać 11 cyfr",
+    "year" : "Rok z przedziału 1900-2000",
+    "power" : "Moc od 50 do 600",
+    "capacity" : "Przedział od 1.0 do 10.0",
+    "cost" : "Od 50 do 400",
+    "punishment" : "Ew. kara 50-200 zł",
+    "client" : "---Wybierz klienta---",
+    "car" : "---Wybierz auto---"
+  },
+
+  "main-page": {
+    "content": "Strona główna",
+    "content2" : "Firma 'Dream On Wheels' jest wypożyczalnią wyjątkowych samochodów działającą od 1998 roku. W swojej ofercie ma niepowtarzalne auta, sprowadzone ze Stanów Zjednoczonych Ameryki. Wraz z osiągnięciem dużej popularności przedsiębiorstwa nastała potrzeba stworzenia aplikacji, która ułatwi zarządzanie wypożyczeniami aut. Aplikacja ma umożliwiać swobodny dostęp do danych dot. oferowanych samochodów, klientów oraz ich wypożyczeń, a także możliwość edycji istniejących danych i wprowadzania nowych do bazy danych."
+  },
+  "nav": {
+    "main": "Strona główna",
+    "clientt": "Klienci",
+    "car": "Auta",
+    "rent": "Wypożyczenia",
+    "logged": "Zalogowano: ",
+    "logout": "Wyloguj się"
+  },
+  "list": {
+    "actions": {
+      "title": "Akcje",
+      "details": "Szczegóły",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "confirm": "Czy napewno chcesz usunąć te dane?"
+    }
+  },
+  "form": {
+    "actions": {
+      "return": "Powrót",
+      "edit": "Edytuj",
+      "cancel": "Anuluj"
+    }
+  },
+  "validationMessage": {
+    "fieldRequired": "Pole jest wymagane",
+    "loginError" : "Nieprawidłowy adres email lub hasło",
+    "validateError" : "Formularz zawiera błędy",
+    "260length" : "Pole powinno zawierać od 2 do 60 znaków",
+    "914length" : "Pole powinno zawierać od 9 do 14 znaków",
+    "telError" : "Nieprawidłowy numer telefonu",
+    "pesLenError" : "Pole powinno zawierać 11 cyfr",
+    "pesellError" : "Nieprawidłowy numer pesel",
+    "560length" : "Pole powinno zawierać od 5 do 60 znaków",
+    "emaillError" : "Pole powinno zawierać prawidłowy adres email",
+    "530length":  "Pole powinno zawierać od 5 do 30 znaków",
+    "emailExists" : "Podany adres email jest już używany",
+    "peselExists" : "Podany numer pesel jest już w bazie",
+    "costErr" : "Koszt z przedziału 50-400",
+    "capacityErr" : "Przedział od 1.0 do 10.0",
+    "dateErr" : "Pole powinno zawierać datę w formacie yyyy-MM-dd",
+    "minRentErr" : "Minimalny wynajem to jedna doba",
+    "beforeErr" : "Data do nie może być wcześniejsza niż data od",
+    "punishErr" : "Kara z przedziału 50-200",
+    "numErr" : "Pole powinno być liczbą"
+  },
+
+  "clientt": {
+    "fields": {
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "phone": "Telefon",
+      "pesel": "Pesel",
+      "email" : "E-mail",
+      "password" : "Hasło"
+    },
+    "list": {
+      "title": "Lista klientów",
+      "addNew": "Dodaj nowego klienta",
+      "noData": "Brak klientów w bazie",
+      "pageTitle": "Lista klientów"
+    },
+    "form": {
+      "rent": "Historia wypożyczeń klienta",
+      "add": {
+        "pageTitle": "Nowy klient",
+        "btnLabel": "Dodaj klienta",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie dodano klienta"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja klienta",
+        "btnLabel": "Edytuj klienta",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie zaktualizowano klienta"
+        }
+      },
+      "details": {
+        "pageTitle": "Szczegóły klienta"
+      }
+    }
+  },
+  "car": {
+    "fields": {
+      "brand": "Marka",
+      "model": "Model",
+      "year": "Rok produkcji",
+      "power": "Moc",
+      "capacity": "Pojemność",
+      "cost" : "Koszt/dzień"
+    },
+    "list": {
+      "title": "Lista aut w ofercie",
+      "addNew": "Dodaj nowe auto",
+      "noData": "Brak aut w bazie",
+      "pageTitle": "Lista aut w ofercie"
+    },
+    "form": {
+      "rent": "Historia wypożyczeń auta",
+      "add": {
+        "pageTitle": "Nowe auto",
+        "btnLabel": "Dodaj auto",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie dodano auto"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja auta",
+        "btnLabel": "Edytuj auto",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie zaktualizowano auto"
+        }
+      },
+      "details": {
+        "pageTitle": "Szczegóły auta"
+      }
+    }
+
+  },
+  "rent": {
+    "fields": {
+      "client_id": "Klient",
+      "car_id": "Auto",
+      "dateFrom": "Data od",
+      "dateTo": "Data do",
+      "cost": "Koszt",
+      "punishment" : "Kara"
+    },
+    "list": {
+      "title": "Lista wypożyczeń",
+      "addNew": "Dodaj nowe wypożyczenie",
+      "noData": "Brak wypożyczeń w bazie",
+      "pageTitle": "Lista wypożyczeń"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Nowe wypożyczenie",
+        "btnLabel": "Dodaj wypożyczenie",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie dodano wypożyczenie"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja wypożyczenia",
+        "btnLabel": "Edytuj wypożyczenie",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Pomyślnie zaktualizowano wypożyczenie"
+        }
+      },
+      "details": {
+        "pageTitle": "Szczegóły wypożyczenia"
+      }
+    }
+  }
+}
+

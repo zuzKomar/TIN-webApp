@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream-On-Wheels Demo</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="languages">
+    <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+    <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
+</div>
+<header>
+    <img class="img2" src="/images/logo2.png" alt="Dmw2">
+    <h1>Dream On Wheels</h1>
+    <img class="img1" src="/images/logo.png" alt="Dream On Wheels Logo">
+</header>
+<main>
+<script type="application/javascript" src="/js/validationCommon.js"></script>
+<script type="application/javascript" src="/js/valiadtionLogin.js"></script>
+
+<div class="login">
+        <div id="login">
+            <h5><%=__('header.log')%></h5>
+            <form method="post" action="/login" novalidate onsubmit="return validateLogin();">
+                <div style="display: none">
+                    <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+                    <span id="errorMessage-loginError"><%=__('validationMessage.loginError')%></span>
+                </div>
+                <div class="labels">
+                    <div>
+                        <label for="loginEmail">E-mail:<abbr title="required" aria-label="required">*</abbr></label>
+                        <input type="email"class="form__field" id="loginEmail" name="email"placeholder="E-mail">
+                        <span id="errorEmail" class="errors-text"></span>
+                    </div>
+                    <div>
+                        <label for="loginPassword"><%=__('header.password')%><abbr title="required" aria-label="required">*</abbr></label>
+                        <input type="password" id="loginPassword" name="password"placeholder=<%=__('header.password')%>>
+                        <span id="errorPassword" class="errors-text"></span>
+                    </div>
+                </div>
+                <div>
+                    <%if(locals.validationErrors){%>
+                    <p id="loginErrors" class="errors-text"></p>
+                        <%}else{%>
+                            <p id="loginErrors" class="errors-text"></p>
+                        <%}%>
+                        <div class="subs">
+                            <input class="sub" type="submit" value=<%=__('header.login')%>>
+                            <a  class="sub" href="/"><%=__('header.cancel')%></a>
+                        </div>
+                </div>
+
+                <span class="errors-text" id="loginErrors"><%= loginError ? loginError : ''%></span>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('./fragments/footer.ejs') %>

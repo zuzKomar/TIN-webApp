@@ -1,0 +1,49 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2><%=__('rent.list.pageTitle')%></h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th><%=__('rent.fields.client_id')%></th>
+            <th><%=__('rent.fields.car_id')%></th>
+            <th><%=__('rent.fields.dateFrom')%></th>
+            <th><%=__('rent.fields.dateTo')%></th>
+            <th><%=__('rent.fields.cost')%></th>
+            <th><%=__('list.actions.title')%></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% for (let rent of rents) { %>
+        <tr>
+            <td><%=rent.client.firstName + ' '+ rent.client.lastName %></td>
+            <td><%=rent.car.brand + ' '+ rent.car.model%></td>
+            <td><%=rent.dateFrom.toISOString().split('T')[0] %></td>
+            <td><%=rent.dateTo ? rent.dateTo.toISOString().split('T')[0] : ''%></td>
+            <td><%=((((rent.dateTo.getTime()-rent.dateFrom.getTime())/(1000*60*60*24))*rent.car.cost)+rent.punishment)%></td>
+            <td>
+                <ul class="list-actions">
+                    <li>
+                        <a href="/rents/details/<%=rent._id%>" class="list-actions-button-details"><%=__('list.actions.details')%></a>
+                    </li>
+                <%  if(loggedUser.role === 'emp') {%>
+                    <li>
+                        <a href="/rents/edit/<%=rent._id%>" class="list-actions-button-edit"><%=__('list.actions.edit')%></a>
+                    </li>
+                    <li>
+                        <a href="/rents/delete/<%=rent._id%>" onclick="return confirm('<%=__('list.actions.confirm')%>')" class="list-actions-button-delete"><%=__('list.actions.delete')%></a>
+                    </li>
+                    <%}%>
+
+                </ul>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+    <%if(loggedUser.role==='emp'){%>
+    <p><a href="/rents/add" class="button-add"><%=__('rent.list.addNew')%></a></p>
+    <%}%>
+</main>
+<%- include('../../fragments/footer.ejs') %>

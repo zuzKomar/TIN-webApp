@@ -1,0 +1,191 @@
+{
+	"header": {
+		"log": "Login",
+		"register": "Register",
+		"register2": "Register",
+		"password": "Pswd",
+		"login": "Login",
+		"cancel": "Cancel",
+		"back": "Back"
+	},
+	"register": {
+		"error": "Form contains errors!",
+		"len1": "2-60 characters",
+		"len2": "9-14 characters",
+		"len3": "5-60 characters",
+		"len4": "5-30 characters",
+		"pes": "PESEL should contain 11 digit",
+		"year": "Year between 1900 and 2000",
+		"power": "Power between 50 and 600",
+		"capacity": "Capacity between 1.0 and 10.0",
+		"cost": "From 50 to 400",
+		"punishment" : "Ew. punishment from 50 to 200 zł",
+		"client" : "---Choose a client---",
+		"car" : "---Choose a car---"
+	},
+	"main-page": {
+		"content": "Main Page",
+		"content2": "Welcome to our world, help your dreams come true! Dream on wheals is a brand offering extraordinary, old american cars for rent, since 1998. \nDue to growing popularity of our community, the need of system, which will speed-up renting process came out. \nThis app should enable effortless access to data of offered cars, clients and their rents. Additionaly it should make possible to add new data to database, update recent data and delete reduntant figures as well."
+	},
+	"nav": {
+		"main": "Main page",
+		"clientt": "Clients",
+		"car": "Cars",
+		"rent": "Rents",
+		"logged": "Logged:  ",
+		"logout": "Logout"
+	},
+	"list": {
+		"actions": {
+			"title": "Actions",
+			"details": "Details",
+			"edit": "Edit",
+			"delete": "Delete",
+			"confirm": "Are you sure you want to delete this data?"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Return",
+			"edit": "Edit",
+			"cancel": "Cancel"
+		}
+	},
+	"validationMessage": {
+		"fieldRequired": "Field is required",
+		"loginError": "Invalid email or password",
+		"validateError": "Form contains errors",
+		"260length": "Field should contain from 2 to 60 characters",
+		"914length": "Field should contain from 9 to 14 characters",
+		"telError": "Invalid phone number",
+		"pesLenError": "Field should contain 11 digits",
+		"pesellError": "Invalid pesel number",
+		"560length": "Field should contain from 5 to 60 characters",
+		"emaillError": "Invalid email format",
+		"530length": "Field should contain from 5 to 30 characters",
+		"emailExists": "This email is already in use",
+		"peselExists": "This pesel is already in database",
+		"costErr": "Cost between 50 and 400",
+		"capacityErr": "Value from 1.0 to 10.0",
+		"dateErr" : "Field should consist date in yyyy-MM-dd format",
+		"minRentErr" : "Minimal rent is a one day",
+		"beforeErr" : "Date to can't be earlier than date from",
+		"punishErr" : "Punishment between 50 and 200",
+		"numErr" : "Input should be a number"
+	},
+	"clientt": {
+		"fields": {
+			"firstName": "First name",
+			"lastName": "Last name",
+			"phone": "Phone",
+			"pesel": "Pesel number",
+			"email": "E-mail",
+			"password": "Password"
+		},
+		"list": {
+			"title": "List of clients",
+			"addNew": "Add new client",
+			"noData": "No clients in database",
+			"pageTitle": "List of clients"
+		},
+		"form": {
+			"rent": "History of rents",
+			"add": {
+				"pageTitle": "New client",
+				"btnLabel": "Add new client",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new client has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a client",
+				"btnLabel": "Edit a client",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The client has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Client details"
+			}
+		}
+	},
+	"car": {
+		"fields": {
+			"brand": "Brand",
+			"model": "Model",
+			"year": "Prod. year",
+			"power": "Power",
+			"capacity": "Capacity",
+			"cost": "Cost/day"
+		},
+		"list": {
+			"title": "List of cars",
+			"addNew": "Add new car",
+			"noData": "No cars in database",
+			"pageTitle": "List of cars"
+		},
+		"form": {
+			"rent": "History of rents",
+			"add": {
+				"pageTitle": "New car",
+				"btnLabel": "Add new car",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new car has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a car",
+				"btnLabel": "Edit a car",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The car has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Car details"
+			}
+		}
+
+	},
+	"rent": {
+		"fields": {
+			"client_id": "Client",
+			"car_id": "Car",
+			"dateFrom": "Date from",
+			"dateTo": "Date to",
+			"cost": "Cost",
+			"punishment": "Punishment"
+		},
+		"list": {
+			"title": "Rents",
+			"addNew": "Add new rent",
+			"noData": "No rents in database",
+			"pageTitle": "List of rents"
+		},
+		"form": {
+			"add": {
+				"pageTitle": "New rent",
+				"btnLabel": "Add new rent",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new rent has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a rent",
+				"btnLabel": "Edit a rent",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The rent has been successfully updated"
+				}
+			},
+			"details":{
+				"pageTitle": "Rent details"
+}
+		}
+	}
+
+}
