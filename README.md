@@ -17,4 +17,7 @@ specific car details and it's eventual rents:
 new rent form, that can be filled by logged employee:
 ![newRent](https://user-images.githubusercontent.com/61700962/106453610-dd3d2080-6489-11eb-8289-d5c2ad707600.png)
 
+rent form validation:
+![validation](https://user-images.githubusercontent.com/61700962/106453628-e0d0a780-6489-11eb-878f-f8ed6d82604e.png)
+
 
