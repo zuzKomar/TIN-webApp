@@ -1,8 +1,8 @@
 # PJATK Internet Technologies passing project
 ## WebApp built using Node.js and Express.js framework
 This prototype app can be used in some car renting brand. Due to added internationalization, app is available in two languages: english and polish. 
-It supports clients operations, like show current cars offer or show list of their previous rents and its details.
-The app gives an opportunity for employee to log in and do some CRUD operations like add new car, client, rent, update or delete some data. He can register new client as well.
+It supports clients operations, like showing current cars offer or showing list of their previous rents and its details.
+The app gives an opportunity for employee to log in and perform some CRUD operations like add new car, client, rent, update or delete some data. He can register new client as well.
 
 logged client home view:
 ![front](https://user-images.githubusercontent.com/61700962/106453578-d1e9f500-6489-11eb-9f9b-6a012707bd5a.png)
