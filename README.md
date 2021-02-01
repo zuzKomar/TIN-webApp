@@ -8,20 +8,20 @@ The app gives an opportunity for employee to log in and perform some CRUD operat
 ![front](https://user-images.githubusercontent.com/61700962/106453578-d1e9f500-6489-11eb-9f9b-6a012707bd5a.png)
 
 
-Logged client rents:
+### Logged client rents:
 ![rentss](https://user-images.githubusercontent.com/61700962/106453619-df9f7a80-6489-11eb-9c62-ea354df8053d.png)
 
-Specific car details and it's eventual rents:
+### Specific car details and it's eventual rents:
 ![details](https://user-images.githubusercontent.com/61700962/106453576-d0b8c800-6489-11eb-9ebb-8ea545e7e62f.png)
 
-New rent form, that can be filled by logged employee:
+### New rent form, that can be filled by logged employee:
 ![newRent](https://user-images.githubusercontent.com/61700962/106453610-dd3d2080-6489-11eb-8289-d5c2ad707600.png)
 
 
-Rent form validation:
+### Rent form validation:
 ![validation](https://user-images.githubusercontent.com/61700962/106453628-e0d0a780-6489-11eb-878f-f8ed6d82604e.png)
 
-Register new client form:
+### Register new client form:
 ![registerr](https://user-images.githubusercontent.com/61700962/106453618-df06e400-6489-11eb-88ab-370d2ba2a5ea.png)
 
 
